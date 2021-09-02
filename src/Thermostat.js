@@ -32,8 +32,12 @@ class Thermostat {
     }
   }
 
-  powerSaving() {
-    this.powerSavingMode = this.powerSavingMode ? false : true
+  powerSavingOn() {
+    this.powerSavingMode = true
+  }
+
+  powerSavingOff() {
+    this.powerSavingMode = false
   }
 
   reset() {

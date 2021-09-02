@@ -31,14 +31,13 @@ describe ("Thermostat", () => {
   });
 
   it("can turn off powersaving mode", () => {
-    thermostat.powerSaving()
+    thermostat.powerSavingOff()
     expect(thermostat.isPowerSaving()).toBe(false);
   });
 
   it("can turn on powersaving mode", () => {
-    for (let i = 0; i < 2; i++) {
-      thermostat.powerSaving()
-    }
+    thermostat.powerSavingOff()
+    thermostat.powerSavingOn()
     expect(thermostat.isPowerSaving()).toBe(true); 
   });
 
@@ -50,7 +49,7 @@ describe ("Thermostat", () => {
   }); 
 
   it("can't go above 32 degrees if powersaving off", () => {
-    thermostat.powerSaving()
+    thermostat.powerSavingOff()
     for(let i = 0; i < 20; i++) {
       thermostat.up();
     }
@@ -75,7 +74,7 @@ describe ("Thermostat", () => {
   });
 
   it("checks to see if a high usage is registered", () => {
-    thermostat.powerSaving()
+    thermostat.powerSavingOff()
     for(let i = 0; i < 10; i++) {
       thermostat.up();
     }
