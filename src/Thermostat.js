@@ -5,7 +5,7 @@ class Thermostat {
     this.MINIMUM_TEMP = 10;
     this.POWERSAVE_MAX_TEMP = 25;
     this.NORMAL_MAX_TEMP = 32;
-    this.temp = this.DEFAULT_TEMP;
+    this.reset()
     this.powerSavingMode = true;
   }
 
@@ -23,12 +23,6 @@ class Thermostat {
     if ( powersave || normal ) {
       this.temp++
     }
-    // if (this.isPowerSaving() && this.temp < this.POWERSAVE_MAX_TEMP) {
-    //   this.temp++
-    // }
-    // if (!this.isPowerSaving() && this.temp < this.NORMAL_MAX_TEMP) {
-    //   this.temp++
-    // }
   }
 
   down() {
@@ -41,5 +35,8 @@ class Thermostat {
     this.powerSavingMode = this.powerSavingMode ? false : true
   }
 
+  reset() {
+    this.temp = this.DEFAULT_TEMP;
+  }
 
 }

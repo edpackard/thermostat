@@ -57,4 +57,9 @@ describe ("Thermostat", () => {
     expect(thermostat.temp).toEqual(32);
   }); 
 
+  it("reset function should reset temperature to 20", () => {
+    thermostat.reset()
+    expect(thermostat.temp).toEqual(20);
+  });
+  
 });
