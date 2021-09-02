@@ -58,8 +58,28 @@ describe ("Thermostat", () => {
   }); 
 
   it("reset function should reset temperature to 20", () => {
-    thermostat.reset()
+    thermostat.up();
+    thermostat.reset();
     expect(thermostat.temp).toEqual(20);
+  });
+
+  it("checks to see if low usage is registered", () => {
+    for(let i = 0; i < 5; i++) {
+      thermostat.down();
+    }
+      expect(thermostat.usage()).toEqual("Low Usage");
+  });
+
+  it("checks to see if medium usage is registered", () => {
+    expect(thermostat.usage()).toEqual("Medium Usage");
+  });
+
+  it("checks to see if a high usage is registered", () => {
+    thermostat.powerSaving()
+    for(let i = 0; i < 10; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.usage()).toEqual("High Usage");
   });
   
 });

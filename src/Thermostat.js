@@ -5,6 +5,7 @@ class Thermostat {
     this.MINIMUM_TEMP = 10;
     this.POWERSAVE_MAX_TEMP = 25;
     this.NORMAL_MAX_TEMP = 32;
+    this.LOW_USAGE_TEMP = 18;
     this.reset()
     this.powerSavingMode = true;
   }
@@ -37,6 +38,15 @@ class Thermostat {
 
   reset() {
     this.temp = this.DEFAULT_TEMP;
+  }
+
+  usage() {
+    if (this.temp < this.LOW_USAGE_TEMP)
+      return "Low Usage"
+    else if (this.temp <= this.POWERSAVE_MAX_TEMP)
+      return "Medium Usage"
+    else
+      return "High Usage"
   }
 
 }
