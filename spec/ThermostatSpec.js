@@ -1,4 +1,4 @@
-describe ("Thermostat", () => {
+describe("Thermostat", () => {
   let thermostat;
 
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe ("Thermostat", () => {
   });
 
   it("expects down to decrease the temperature by 1 degree", () => {
-    for(let i = 0; i < 15; i++) {
+    for (let i = 0; i < 15; i++) {
       thermostat.down();
     }
     expect(thermostat.temp).toEqual(10);
@@ -31,30 +31,30 @@ describe ("Thermostat", () => {
   });
 
   it("can turn off powersaving mode", () => {
-    thermostat.powerSavingOff()
+    thermostat.powerSavingOff();
     expect(thermostat.isPowerSaving()).toBe(false);
   });
 
   it("can turn on powersaving mode", () => {
-    thermostat.powerSavingOff()
-    thermostat.powerSavingOn()
-    expect(thermostat.isPowerSaving()).toBe(true); 
+    thermostat.powerSavingOff();
+    thermostat.powerSavingOn();
+    expect(thermostat.isPowerSaving()).toBe(true);
   });
 
   it("can't go above 25 degrees if powersaving on", () => {
-    for(let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
       thermostat.up();
     }
     expect(thermostat.temp).toEqual(25);
-  }); 
+  });
 
   it("can't go above 32 degrees if powersaving off", () => {
-    thermostat.powerSavingOff()
-    for(let i = 0; i < 20; i++) {
+    thermostat.powerSavingOff();
+    for (let i = 0; i < 20; i++) {
       thermostat.up();
     }
     expect(thermostat.temp).toEqual(32);
-  }); 
+  });
 
   it("reset function should reset temperature to 20", () => {
     thermostat.up();
@@ -63,10 +63,10 @@ describe ("Thermostat", () => {
   });
 
   it("checks to see if low usage is registered", () => {
-    for(let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       thermostat.down();
     }
-      expect(thermostat.usage()).toEqual("Low Usage");
+    expect(thermostat.usage()).toEqual("Low Usage");
   });
 
   it("checks to see if medium usage is registered", () => {
@@ -74,11 +74,10 @@ describe ("Thermostat", () => {
   });
 
   it("checks to see if a high usage is registered", () => {
-    thermostat.powerSavingOff()
-    for(let i = 0; i < 10; i++) {
+    thermostat.powerSavingOff();
+    for (let i = 0; i < 10; i++) {
       thermostat.up();
     }
     expect(thermostat.usage()).toEqual("High Usage");
   });
-  
 });
