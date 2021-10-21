@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const localTemperature = () => {
-    fetch(
-      "http://api.openweathermap.org/data/2.5/weather?q=Ipswich,uk&units=metric&APPID=3bd226d52051ddd6ea23503b34ab4b1c"
-    )
+  const localTemperature = (location = "ipswich,uk") => {
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${location},uk&units=metric&APPID=3bd226d52051ddd6ea23503b34ab4b1c`;
+
+    fetch(url)
       .then((response) => {
         return response.json();
       })
@@ -12,14 +12,21 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   };
 
-  localTemperature();
-
   const updateTemperature = () => {
     document.querySelector("#temperature").innerText = thermostat.temp;
   };
 
   const thermostat = new Thermostat();
   updateTemperature();
+  localTemperature();
+
+  document
+    .querySelector("#select-location")
+    .addEventListener("submit", (event) => {
+      event.preventDefault();
+      const location = document.querySelector("#choose-location").value;
+      localTemperature(location);
+    });
 
   document.querySelector("#temperature-up").addEventListener("click", () => {
     thermostat.up();
