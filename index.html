@@ -3,28 +3,31 @@
 <html>
   <head>
     <title>Thermostat</title>
+    <link rel="stylesheet" href="stylesheet.css">
   </head>
   <body>
-    <section>
-      <h1 id='location'></h1>
-      <p>temperature is <span id='local-temp'></span> celsius</p>
-      <section>
-        <h1>Current temperature: <span id="current-temperature">20</span></h1>
-        <form id="select-location">
-          <input id="choose-location" type="text" placeholder="Enter a location"></input>
-          <input type="submit"></input>
-        </form>
-      </section>
-      <h1 id='temperature'></h1>
-      <p>
-        <button id='temperature-up'>+</button>
-        <button id='temperature-down'>-</button>
-        <button id='temperature-reset'>reset</button>
-        power saving mode is <span id='power-saving-status'>on</span>
-        <button id='powersaving-on'>PSM on</button>
-        <button id='powersaving-off'>PSM off</button>
-      </p>
-      </section>
+    <div class = "container">
+      <div class = "location-box">
+        <h1 id='location'></h1>
+        <p>temperature is <span id='local-temp'></span> celsius</p>
+          <h1>Current temperature: <span id="current-temperature">20</span></h1>
+          <form id="select-location">
+            <input id="choose-location" type="text" placeholder="Enter a location"></input>
+            <input type="submit"></input>
+          </form>
+        </div>
+        <div class = "thermostat-box">
+        <h1 id='temperature'></h1>
+        <p>
+          <button id='temperature-up'>+</button>
+          <button id='temperature-down'>-</button>
+          <button id='temperature-reset'>reset</button>
+          power saving mode is <span id='power-saving-status'>on</span>
+          <button id='powersaving-on'>PSM on</button>
+          <button id='powersaving-off'>PSM off</button>
+        </p>
+      </div>
+      </div>
       <script src="src/interface.js"></script>
       <script src="src/thermostat.js"></script>
   </body>

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const localTemperature = (location = "ipswich,uk") => {
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${location},uk&units=metric&APPID=3bd226d52051ddd6ea23503b34ab4b1c`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=3bd226d52051ddd6ea23503b34ab4b1c`;
 
     fetch(url)
       .then((response) => {
@@ -8,7 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then((data) => {
         document.querySelector("#location").innerText = data.name;
-        document.querySelector("#local-temp").innerText = data.main.temp;
+        console.log(data.main.temp);
+        document.querySelector("#local-temp").innerText = Math.round(
+          data.main.temp
+        );
       });
   };
 
