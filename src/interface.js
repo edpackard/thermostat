@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then((data) => {
         document.querySelector("#location").innerText = data.name;
-        console.log(data.main.temp);
         document.querySelector("#local-temp").innerText = Math.round(
           data.main.temp
         );
